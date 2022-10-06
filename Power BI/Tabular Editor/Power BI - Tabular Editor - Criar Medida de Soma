@@ -1,0 +1,9 @@
+// Criar Medida de Soma das Colunas Selecionadas
+foreach (var c in Selected.Columns)
+{
+	c.Table.AddMeasure(
+	"Soma de "+c.Name,	//Criacao do Nome da Medida
+	"Sum(" + c.DaxObjextFullName + ")",	//Criacao da Expressao Dax
+	c.DisplayFolder //Oculta a Coluna selecionada
+	);
+}
