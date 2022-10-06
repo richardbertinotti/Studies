@@ -2,8 +2,8 @@
 foreach (var c in Selected.Columns)
 {
     c.Table.AddMeasure(
-    "Soma de "+c.Name,  //Criacao do Nome da Medida
-    "Sum(" + c.DaxObjextFullName + ")", //Criacao da Expressao Dax
+    "Soma de " + c.Name,  //Criacao do Nome da Medida
+    "Sum(" + c.DaxObjectFullName + ")", //Criacao da Expressao Dax
     c.DisplayFolder 
     );
     c.IsHidden = true; //Oculta a Coluna selecionada
