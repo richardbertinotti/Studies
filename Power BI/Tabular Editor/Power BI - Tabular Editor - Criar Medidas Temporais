@@ -1,5 +1,6 @@
 // Fonte: https://docs.tabulareditor.com/Useful-script-snippets.html
 //Adaptado por Gerson G. Viergutz - Minhas Planilhas
+//Adaptado por Richard A. Bertinotti
 
 // Definir qual o Nome da Tabela e coluna data da Tabela Calendário
 var colunadata = "dCalendario[Data]";
@@ -30,4 +31,19 @@ foreach(var m in Selected.Measures) {
         "TOTALMTD(" + m.DaxObjectName +"," + colunadata + ")",                                              //Medida
         m.DisplayFolder                                                                                     //Exibir Pasta
     );
+
+//Valor do Mesmo Período M-1
+    m.Table.AddMeasure(                                                                     
+    m.Name + "_M-1",                                                                                                            //Nome
+    "CALCULATE(SUM(" + m.DaxObjectName + "),DATEADD(" + colunadata + ",-1,MONTH))",                                             //Medida
+        m.DisplayFolder                                                                                                         //Exibir Pasta
+    );
+
+//Valor do Mesmo Período M-2
+    m.Table.AddMeasure(                                                                     
+    m.Name + "_M-2",                                                                                                            //Nome
+    "CALCULATE(SUM(" + m.DaxObjectName + "),DATEADD(" + colunadata + ",-2,MONTH))",                                             //Medida
+        m.DisplayFolder                                                                                                         //Exibir Pasta
+    );
+
 }
