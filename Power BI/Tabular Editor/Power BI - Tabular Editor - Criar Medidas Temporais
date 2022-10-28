@@ -3,7 +3,7 @@
 //Adaptado por Richard A. Bertinotti
 
 // Definir qual o Nome da Tabela e coluna data da Tabela Calendário
-var colunadata = "dCalendario[Data]";
+var colunadata = "Dim_Calendario[Data]";
 //Criar Medidas de Inteligência de Tempo para cada medida selecionada.
 foreach(var m in Selected.Measures) {
     //Valor do Mesmo Período do Ano Anterior
@@ -35,14 +35,14 @@ foreach(var m in Selected.Measures) {
 //Valor do Mesmo Período M-1
     m.Table.AddMeasure(                                                                     
     m.Name + "_M-1",                                                                                                            //Nome
-    "CALCULATE(SUM(" + m.DaxObjectName + "),DATEADD(" + colunadata + ",-1,MONTH))",                                             //Medida
+    "CALCULATE(" + m.DaxObjectName + ",DATEADD(" + colunadata + ",-1,MONTH))",                                             //Medida
         m.DisplayFolder                                                                                                         //Exibir Pasta
     );
 
 //Valor do Mesmo Período M-2
     m.Table.AddMeasure(                                                                     
     m.Name + "_M-2",                                                                                                            //Nome
-    "CALCULATE(SUM(" + m.DaxObjectName + "),DATEADD(" + colunadata + ",-2,MONTH))",                                             //Medida
+    "CALCULATE(" + m.DaxObjectName + ",DATEADD(" + colunadata + ",-2,MONTH))",                                             //Medida
         m.DisplayFolder                                                                                                         //Exibir Pasta
     );
 
